@@ -3,9 +3,11 @@ const app = express();
 const userRoutes= require("./routers/user.router")
 const profileRoutes=require("./routers/profile.router")
 const cookieParser = require('cookie-parser');
+const dotenv = require("dotenv")
+dotenv.config()
 
 
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 app.set("view engine", "ejs");
 

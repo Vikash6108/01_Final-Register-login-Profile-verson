@@ -11,7 +11,7 @@ module.exports.authUser = (req, res, next) => {
       });
     }
     
-    const decoded = jwt.verify(token, "payload-for-token");
+    const decoded = jwt.verify(token, process.env.JWT_SEC);
 
     req.user = decoded;
 

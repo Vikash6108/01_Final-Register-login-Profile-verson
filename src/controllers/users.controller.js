@@ -15,7 +15,6 @@ module.exports.registerUserController = async (req,res)=>{
 
     const hashPassword= await bcrypt.hash(password,10)
 
-    
     const user= await userModel.create({
        username,
        fullname,
@@ -27,7 +26,7 @@ module.exports.registerUserController = async (req,res)=>{
         {
           id: user._id,
           email: user.email,
-        },"payload-for-token"
+        }, process.env.JWT_SEC
     );
     
     res.cookie("token", token);
@@ -66,7 +65,7 @@ module.exports.loginUserController = async (req,res)=>{
         {
           id: user._id,
           email: user.email,
-        },"payload-for-token"
+        }, process.env.JWT_SEC
     );
 
     res.cookie("token",token);
